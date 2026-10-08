@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# THE PHALANX — Plymouth boot splash theme
+# Install to: /usr/share/plymouth/themes/the-phalanx/
+# Enable with: sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/the-phalanx/the-phalanx.plymouth 100
+#              sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/the-phalanx/the-phalanx.plymouth
+#              sudo update-initramfs -u
+#
+# This is a script-based theme (no compiled binary blobs needed).
+
+[Plymouth Theme]
+Name=The Phalanx
+Description=Monochrome brutalist boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/the-phalanx
+ScriptFile=/usr/share/plymouth/themes/the-phalanx/the-phalanx.script

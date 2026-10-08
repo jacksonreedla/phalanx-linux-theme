@@ -1,0 +1,88 @@
+# THE PHALANX — Plymouth script theme
+# Pure black screen, single white text label "THE PHALANX" fading in,
+# then a thin horizontal white line that grows across the screen as a progress bar.
+
+# === State ===
+progress = 0.0;
+fade_in = 0.0;
+boot_done = false;
+
+# === Boot callbacks ===
+
+fun boot_progress (duration, progress_delta) {
+    progress += progress_delta;
+    if (progress >= 1.0) {
+        progress = 1.0;
+        boot_done = true;
+    }
+}
+
+fun boot_splash_setup () {
+    # nothing
+}
+
+fun hide_splash_callback () {
+    # nothing — let the fade-out handle it
+}
+
+# === Draw ===
+
+window.SetBackgroundTopColor (0.0, 0.0, 0.0);
+window.SetBackgroundBottomColor (0.0, 0.0, 0.0);
+
+fun refresh_callback () {
+    # Fade in over first 1.5s
+    if (fade_in < 1.0) {
+        fade_in += 0.02;
+        if (fade_in > 1.0) fade_in = 1.0;
+    }
+
+    # Clear
+    window.SetBackgroundTopColor (0.0, 0.0, 0.0);
+    window.SetBackgroundBottomColor (0.0, 0.0, 0.0);
+
+    # Center the brand mark
+    brand_x = Window.GetX () + (Window.GetWidth () / 2) - 200;
+    brand_y = Window.GetY () + (Window.GetHeight () / 2) - 60;
+
+    # "THE PHALANX" — large, white, fade-in
+    brand_label = Image.Text ("THE PHALANX", 1.0, 1.0, 1.0, "DejaVu Sans Bold", 64);
+    brand_alpha = fade_in;
+    brand_sprite = Sprite.New (brand_label);
+    brand_sprite.SetPosition (Window.GetX () + (Window.GetWidth () - brand_label.GetWidth ()) / 2, brand_y);
+    brand_sprite.SetOpacity (brand_alpha);
+
+    # Subtitle below brand — "VOL. I · MMXXVI"
+    sub_label = Image.Text ("VOL. I   ·   MMXXVI", 0.55, 0.55, 0.55, "DejaVu Sans", 18);
+    sub_sprite = Sprite.New (sub_label);
+    sub_sprite.SetPosition (Window.GetX () + (Window.GetWidth () - sub_label.GetWidth ()) / 2, brand_y + 80);
+    sub_sprite.SetOpacity (fade_in);
+
+    # Thin progress rule — horizontal line that grows
+    rule_y = Window.GetY () + (Window.GetHeight () * 0.7);
+    rule_x_start = Window.GetX () + (Window.GetWidth () - 480) / 2;
+    rule_x_end = rule_x_start + 480 * progress;
+
+    # Draw the filled portion (white)
+    filled = Image.New (rule_x_end - rule_x_start, 2);
+    filled.Fill (1.0, 1.0, 1.0, fade_in);
+    filled_sprite = Sprite.New (filled);
+    filled_sprite.SetPosition (rule_x_start, rule_y);
+
+    # Draw the unfilled portion (dim)
+    unfilled = Image.New (480 - (rule_x_end - rule_x_start), 2);
+    unfilled.Fill (0.18, 0.18, 0.18, fade_in);
+    unfilled_sprite = Sprite.New (unfilled);
+    unfilled_sprite.SetPosition (rule_x_end, rule_y);
+
+    # Footer — "MARS · MILES" or similar, bottom-right
+    footer_label = Image.Text ("— THE FORM OUTLIVES THE NAME", 0.27, 0.27, 0.27, "DejaVu Sans", 12);
+    footer_sprite = Sprite.New (footer_label);
+    footer_sprite.SetPosition (Window.GetX () + Window.GetWidth () - footer_label.GetWidth () - 60, Window.GetY () + Window.GetHeight () - 60);
+    footer_sprite.SetOpacity (fade_in);
+}
+
+Plymouth.SetBootProgressFunction (boot_progress);
+Plymouth.SetRefreshFunction (refresh_callback);
+Plymouth.SetBootSplashSetupFunction (boot_splash_setup);
+Plymouth.SetHideSplashFunction (hide_splash_callback);

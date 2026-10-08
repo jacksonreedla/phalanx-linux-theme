@@ -1,0 +1,357 @@
+/*
+ * THE PHALANX — GTK4 theme
+ * GTK4 uses different selectors. Monochrome brutalist.
+ */
+
+/* Color tokens */
+@define-color phalanx_bg           #000000;
+@define-color phalanx_bg_elevated  #141414;
+@define-color phalanx_bg_section   #1A1A1A;
+@define-color phalanx_fg           #FFFFFF;
+@define-color phalanx_fg_dim       #D4D4D4;
+@define-color phalanx_fg_muted     #8A8A8A;
+@define-color phalanx_fg_faint     #4A4A4A;
+@define-color phalanx_rule         rgba(255,255,255,0.32);
+@define-color phalanx_rule_strong  rgba(255,255,255,0.85);
+@define-color phalanx_accent_bg    #FFFFFF;
+@define-color phalanx_accent_fg    #000000;
+
+/* === Window / view === */
+window, .background {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+view, textview, treeview, columnview, gridview, listview {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+/* === Header bars === */
+headerbar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border-bottom: 1px solid @phalanx_rule;
+    box-shadow: none;
+}
+
+headerbar:backdrop {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+}
+
+windowhandle {
+    background-color: @phalanx_bg;
+}
+
+window.devel headerbar {
+    background-color: @phalanx_bg;
+}
+
+/* === Buttons === */
+button {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    padding: 6px 14px;
+    min-height: 18px;
+    box-shadow: none;
+    transition: all 150ms ease;
+}
+
+button:hover {
+    background-color: @phalanx_bg_section;
+    border-color: @phalanx_rule_strong;
+}
+
+button:active, button:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+button.suggested-action {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+button.destructive-action {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+}
+
+/* === Entries === */
+entry, entry.flat {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    padding: 6px 10px;
+    box-shadow: none;
+}
+
+entry:focus, entry:focus-within {
+    border-color: @phalanx_rule_strong;
+    box-shadow: none;
+}
+
+/* === Popovers / menus === */
+popover > contents, popover.background > contents {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 4px;
+}
+
+popover listview row,
+popover list row {
+    background-color: transparent;
+    color: @phalanx_fg;
+    padding: 4px 10px;
+}
+
+popover listview row:selected,
+popover list row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+/* === List rows === */
+listview row, list row {
+    background-color: transparent;
+    color: @phalanx_fg;
+    padding: 4px 8px;
+}
+
+listview row:selected,
+list row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+/* === Notebook tabs === */
+notebook > header > tabs > tab {
+    background-color: transparent;
+    color: @phalanx_fg_muted;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 6px 14px;
+}
+
+notebook > header > tabs > tab:checked,
+notebook > header > tabs > tab:checked:hover {
+    color: @phalanx_fg;
+    border-bottom-color: @phalanx_fg;
+}
+
+/* === Sidebar === */
+.sidebar, placessidebar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_dim;
+    border-right: 1px solid @phalanx_rule;
+}
+
+.sidebar row:selected,
+placessidebar row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+/* === Scrollbar === */
+scrollbar {
+    background-color: transparent;
+    border: none;
+}
+
+scrollbar > range > trough {
+    background-color: transparent;
+}
+
+scrollbar > range > trough > slider {
+    background-color: @phalanx_fg_faint;
+    border: none;
+    border-radius: 0;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar > range > trough > slider:hover {
+    background-color: @phalanx_fg;
+}
+
+/* === Switch === */
+switch {
+    background-color: @phalanx_bg_elevated;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    min-width: 44px;
+    min-height: 22px;
+}
+
+switch:checked {
+    background-color: @phalanx_accent_bg;
+    border-color: @phalanx_accent_bg;
+}
+
+switch > slider {
+    background-color: @phalanx_fg_muted;
+    border: none;
+    border-radius: 0;
+    min-width: 18px;
+    min-height: 18px;
+    margin: 1px;
+}
+
+switch:checked > slider {
+    background-color: @phalanx_accent_fg;
+}
+
+/* === Check / radio === */
+check, radio {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+    border-radius: 0;
+    min-width: 14px;
+    min-height: 14px;
+}
+
+check:checked, radio:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+/* === Scale / progress === */
+scale > trough {
+    background-color: @phalanx_bg_elevated;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    min-height: 4px;
+}
+
+scale > trough > highlight {
+    background-color: @phalanx_accent_bg;
+}
+
+scale > trough > slider {
+    background-color: @phalanx_accent_bg;
+    border: 1px solid @phalanx_fg;
+    border-radius: 0;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+progressbar > trough {
+    background-color: @phalanx_bg_elevated;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+}
+
+progressbar > trough > progress {
+    background-color: @phalanx_accent_bg;
+}
+
+/* === Tooltip === */
+tooltip {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+    border-radius: 0;
+}
+
+/* === Selection === */
+selection {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* === Separator === */
+separator {
+    background-color: @phalanx_rule;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+/* === Toolbar === */
+toolbar {
+    background-color: @phalanx_bg;
+    border-bottom: 1px solid @phalanx_rule;
+}
+
+/* === Statusbar === */
+statusbar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+    border-top: 1px solid @phalanx_rule;
+}
+
+/* === Calendar === */
+calendar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+}
+
+calendar > grid > label.today {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* === Frame === */
+frame > border {
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+}
+
+/* === Misc === */
+label:disabled {
+    color: @phalanx_fg_faint;
+}
+
+link {
+    color: @phalanx_fg;
+}
+
+/* Window controls (libadwaita) */
+windowcontrols button {
+    background-color: transparent;
+    color: @phalanx_fg_muted;
+    border: none;
+    padding: 4px;
+}
+
+windowcontrols button:hover {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+windowcontrols button:active {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* Adwaita-specific: tone down the default blue */
+button.suggested-action,
+headerbar button:checked,
+treeview.view:selected,
+row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+searchbar,
+.actionbar {
+    background-color: @phalanx_bg;
+    border-bottom: 1px solid @phalanx_rule;
+}

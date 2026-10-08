@@ -1,0 +1,69 @@
+# THE PHALANX — GRUB theme
+# Place in /boot/grub/themes/the-phalanx/ and enable in /etc/default/grub:
+#   GRUB_THEME="/boot/grub/themes/the-phalanx/theme.txt"
+# Then run: sudo update-grub
+
+title-text: "THE PHALANX"
+title-font: "DejaVu Sans Bold"
+title-color: "#FFFFFF"
+message-font: "DejaVu Sans Mono"
+message-color: "#FFFFFF"
+message-bg-color: "#000000"
+desktop-image: "background.png"
+desktop-color: "#000000"
+terminal-box: "terminal_box_*.png"
+
++ boot_menu {
+    top = 35%
+    left = 15%
+    width = 70%
+    height = 50%
+    item_font = "DejaVu Sans"
+    item_color = "#D4D4D4"
+    selected_item_color = "#FFFFFF"
+    item_height = 28
+    item_padding = 8
+    item_spacing = 4
+    selected_item_pixmap_style = "selected_item_*.png"
+    icon_width = 0
+    icon_height = 0
+    item_icon_space = 0
+    scrollbar_width = 4
+    scrollbar_thumb = "scrollbar_thumb_*.png"
+    scrollbar_frame = "scrollbar_frame_*.png"
+}
+
++ label {
+    text = "SELECT A FORMATION"
+    top = 22%
+    left = 15%
+    width = 70%
+    height = 30
+    align = "left"
+    color = "#8A8A8A"
+    font = "DejaVu Sans"
+}
+
++ label {
+    text = "THE PHALANX · VOL. I · MMXXVI"
+    bottom = 8%
+    left = 15%
+    width = 70%
+    height = 20
+    align = "left"
+    color = "#4A4A4A"
+    font = "DejaVu Sans"
+}
+
++ hbox {
+    top = 88%
+    left = 15%
+    width = 70%
+    height = 30
+    + label {
+        text = "↑↓ SELECT   ↵ ENTER   E EDIT   C COMMANDLINE"
+        color = "#4A4A4A"
+        font = "DejaVu Sans Mono"
+        align = "left"
+    }
+}

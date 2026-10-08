@@ -1,0 +1,570 @@
+/*
+ * THE PHALANX — GTK3 theme
+ * Monochrome brutalist editorial × Greek/Roman statuary
+ * Pure black / white / gray only. No color, no ornament.
+ */
+
+/* === Imports === */
+@import url("resource:///org/gnome/theme/gtk.css");
+
+/* === Color tokens === */
+@define-color phalanx_bg           #000000;
+@define-color phalanx_bg_elevated  #141414;
+@define-color phalanx_bg_section   #1A1A1A;
+@define-color phalanx_fg           #FFFFFF;
+@define-color phalanx_fg_dim       #D4D4D4;
+@define-color phalanx_fg_muted     #8A8A8A;
+@define-color phalanx_fg_faint     #4A4A4A;
+@define-color phalanx_rule         rgba(255,255,255,0.32);
+@define-color phalanx_rule_strong  rgba(255,255,255,0.85);
+@define-color phalanx_accent       #FFFFFF;
+@define-color phalanx_accent_bg    #FFFFFF;
+@define-color phalanx_accent_fg    #000000;
+@define-color phalanx_warning      #D4D4D4;
+@define-color phalanx_error        #FFFFFF;
+@define-color phalanx_success      #D4D4D4;
+
+/* === Global === */
+* {
+    -GtkWindow-resize-grip-height: 0;
+    -GtkWindow-resize-grip-width: 0;
+    -GtkScrolledWindow-scrollbar-spacing: 0;
+    -GtkToolItemGroup-expander-size: 11;
+    outline: none;
+}
+
+window, dialog {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+/* === Header bars / title bars === */
+headerbar, .titlebar {
+    background-color: @phalanx_bg;
+    background-image: none;
+    color: @phalanx_fg;
+    border-bottom: 1px solid @phalanx_rule;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    padding: 6px 12px;
+}
+
+headerbar:backdrop, .titlebar:backdrop {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+}
+
+headerbar entry,
+headerbar spinbutton {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+}
+
+/* Window close/min/max buttons — minimal squares */
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+    background-color: transparent;
+    color: @phalanx_fg_muted;
+    border: none;
+    padding: 4px;
+    min-width: 14px;
+    min-height: 14px;
+}
+headerbar button.titlebutton:hover,
+.titlebar button.titlebutton:hover {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+headerbar button.titlebutton:backdrop,
+.titlebar button.titlebutton:backdrop {
+    color: @phalanx_fg_faint;
+}
+
+/* === Buttons === */
+button {
+    background-color: @phalanx_bg_elevated;
+    background-image: none;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;           /* sharp corners — brutalist */
+    padding: 6px 14px;
+    min-height: 18px;
+    box-shadow: none;
+    transition: all 0.15s ease;
+}
+
+button:hover {
+    background-color: @phalanx_bg_section;
+    color: @phalanx_fg;
+    border-color: @phalanx_rule_strong;
+}
+
+button:active, button:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+button:disabled {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_faint;
+    border-color: @phalanx_fg_faint;
+}
+
+/* Suggested / primary button — inverted */
+button.suggested-action {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+button.suggested-action:hover {
+    background-color: @phalanx_fg_dim;
+    color: @phalanx_accent_fg;
+}
+
+/* Destructive */
+button.destructive-action {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+}
+button.destructive-action:hover {
+    background-color: @phalanx_fg;
+    color: @phalanx_bg;
+}
+
+/* === Entries (text inputs) === */
+entry {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    padding: 6px 10px;
+    min-height: 18px;
+    box-shadow: none;
+}
+
+entry:focus {
+    border-color: @phalanx_rule_strong;
+    box-shadow: none;
+}
+
+entry:disabled {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_faint;
+    border-color: @phalanx_fg_faint;
+}
+
+entry selection {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+entry.search {
+    border-color: @phalanx_rule;
+}
+
+/* === Notebook (tabs) === */
+notebook {
+    border: none;
+    background-color: @phalanx_bg;
+}
+
+notebook > header {
+    background-color: @phalanx_bg;
+    border-bottom: 1px solid @phalanx_rule;
+}
+
+notebook tab {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 6px 14px;
+    min-height: 18px;
+}
+
+notebook tab:checked {
+    color: @phalanx_fg;
+    border-bottom-color: @phalanx_fg;
+}
+
+notebook tab:hover:not(:checked) {
+    color: @phalanx_fg_dim;
+    border-bottom-color: @phalanx_fg_muted;
+}
+
+/* === Sidebar / pane separator === */
+sidebar, placessidebar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_dim;
+    border-right: 1px solid @phalanx_rule;
+}
+
+sidebar row:selected,
+placessidebar row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+separator {
+    background-color: @phalanx_rule;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+paned separator {
+    background-color: @phalanx_rule;
+    border-width: 0;
+}
+
+/* === Lists / rows === */
+list, .list {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+list row {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: none;
+    padding: 4px 6px;
+}
+
+list row:selected {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+list row:hover:not(:selected) {
+    background-color: @phalanx_bg_section;
+}
+
+/* === Menus === */
+menubar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border-bottom: 1px solid @phalanx_rule;
+}
+
+menubar > menuitem {
+    background-color: transparent;
+    color: @phalanx_fg;
+    padding: 4px 10px;
+}
+
+menubar > menuitem:hover,
+menubar > menuitem:active {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+menu, .menu, popover, .popover {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 4px;
+}
+
+menuitem, .menuitem {
+    background-color: transparent;
+    color: @phalanx_fg;
+    padding: 4px 10px;
+    border-radius: 0;
+}
+
+menuitem:hover, .menuitem:hover,
+menuitem:active, .menuitem:active {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+}
+
+menuitem:disabled {
+    color: @phalanx_fg_faint;
+}
+
+/* === Scrollbars === */
+scrollbar {
+    background-color: @phalanx_bg;
+    border: none;
+}
+
+scrollbar slider {
+    background-color: @phalanx_fg_faint;
+    border: none;
+    border-radius: 0;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar slider:hover {
+    background-color: @phalanx_fg_muted;
+}
+
+scrollbar slider:active {
+    background-color: @phalanx_fg;
+}
+
+scrollbar button {
+    background-color: transparent;
+    border: none;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+/* === Checkboxes / radios === */
+check, radio {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+    border-radius: 0;
+    min-width: 14px;
+    min-height: 14px;
+    padding: 0;
+}
+
+check:checked, radio:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+/* === Switches === */
+switch {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg_muted;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    min-width: 44px;
+    min-height: 22px;
+}
+
+switch:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border-color: @phalanx_accent_bg;
+}
+
+switch slider {
+    background-color: @phalanx_fg_muted;
+    color: @phalanx_bg;
+    border: none;
+    border-radius: 0;
+}
+
+switch:checked slider {
+    background-color: @phalanx_accent_fg;
+    color: @phalanx_accent_bg;
+}
+
+/* === Sliders / scales === */
+scale {
+    background-color: transparent;
+    color: @phalanx_fg;
+}
+
+scale trough {
+    background-color: @phalanx_bg_elevated;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    min-height: 4px;
+    min-width: 4px;
+}
+
+scale highlight {
+    background-color: @phalanx_accent_bg;
+    border: none;
+}
+
+scale slider {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+    border: 1px solid @phalanx_fg;
+    border-radius: 0;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+/* === Progress bars === */
+progressbar {
+    background-color: transparent;
+    color: @phalanx_fg;
+}
+
+progressbar trough {
+    background-color: @phalanx_bg_elevated;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    min-height: 4px;
+}
+
+progressbar progress {
+    background-color: @phalanx_accent_bg;
+    border: none;
+    border-radius: 0;
+}
+
+/* === Tree views === */
+treeview {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+treeview header button {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+    border: none;
+    border-bottom: 1px solid @phalanx_rule;
+    border-radius: 0;
+    padding: 4px 8px;
+}
+
+treeview header button:hover {
+    color: @phalanx_fg;
+}
+
+/* === Tooltips === */
+tooltip {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule_strong;
+    border-radius: 0;
+    padding: 6px 10px;
+}
+
+/* === Calendar === */
+calendar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+    padding: 4px;
+}
+
+calendar:selected {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* === Frame === */
+frame > border {
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+}
+
+/* === Link buttons / links === */
+*:link {
+    color: @phalanx_fg;
+    text-decoration: underline;
+}
+
+button:link, button:visited {
+    background-color: transparent;
+    color: @phalanx_fg;
+    border: none;
+    padding: 2px 4px;
+}
+
+button:link:hover, button:visited:hover {
+    text-decoration: underline;
+}
+
+/* === Selection === */
+selection {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* === Info bars === */
+infobar {
+    background-color: @phalanx_bg_elevated;
+    color: @phalanx_fg;
+    border: 1px solid @phalanx_rule;
+    border-radius: 0;
+}
+
+infobar:backdrop {
+    background-color: @phalanx_bg;
+}
+
+/* === Assistant / wizard === */
+assistant {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+/* === File chooser === */
+filechooser {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+}
+
+filechooser placessidebar {
+    background-color: @phalanx_bg;
+    border-right: 1px solid @phalanx_rule;
+}
+
+/* === Statusbar === */
+statusbar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg_muted;
+    border-top: 1px solid @phalanx_rule;
+    padding: 2px 6px;
+}
+
+/* === Toolbar === */
+toolbar {
+    background-color: @phalanx_bg;
+    color: @phalanx_fg;
+    border-bottom: 1px solid @phalanx_rule;
+    padding: 4px;
+}
+
+toolbar button {
+    background-color: transparent;
+    border: none;
+    padding: 4px 8px;
+}
+
+toolbar button:hover {
+    background-color: @phalanx_bg_elevated;
+}
+
+toolbar button:active, toolbar button:checked {
+    background-color: @phalanx_accent_bg;
+    color: @phalanx_accent_fg;
+}
+
+/* === Spinner === */
+spinner {
+    color: @phalanx_fg;
+}
+
+/* === Misc === */
+label:disabled {
+    color: @phalanx_fg_faint;
+}
+
+label:backdrop {
+    color: @phalanx_fg_muted;
+}
+
+image:disabled {
+    color: @phalanx_fg_faint;
+}
+
+/* Nemo / Caja / Nautilus path bar */
+.path-bar button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+.path-bar button:checked {
+    background-color: @phalanx_bg_elevated;
+    border-bottom: 2px solid @phalanx_fg;
+}
